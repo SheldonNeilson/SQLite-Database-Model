@@ -1,0 +1,39 @@
+
+SQLite Database Model
+Copyright 2014 Sheldon Neilson <sheldon@neilson.co.za>
+
+This product includes software developed as a part of
+The SQLite Database Model ORM Project (http://www.neilson.co.za/).
+
+------------------------------------------------------------------
+
+Android
+Copyright 2005-2008 The Android Open Source Project
+ 
+Versions of this product packaged for android support include 
+software developed as part of
+The Android Open Source Project (http://source.android.com).
+
+------------------------------------------------------------------
+
+Xerial SQLite JDBC Driver
+Copyright 2009 Taro L. Saito <leo@xerial.org>
+
+Versions of this product packaged with the Xerial SQLite JDBC Driver includes
+software developed as part of
+The Xerial SQLite JDBC Driver (http://www.xerial.org/).
+
+Zentus SQLite JDBC Driver
+Copyright 2007 David Crawshaw <david@zentus.com>
+
+Versions of this product packaged with the Xerial SQLite JDBC Driver includes
+software developed by or derived from 
+The Zentus SQLite JDBC Driver (http://www.zentus.com/).
+
+------------------------------------------------------------------
+ 
+Apache Commons
+Copyright 1999-2004 The Apache Software Foundation
+ 
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
