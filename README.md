@@ -1,7 +1,6 @@
 SQLite-Database-Model
 =====================
 
-A super lightweight yet powerful Object Relational Mapping (ORM) Framework for Java and SQLite 3
 SQLite Database Model is a super lightweight yet powerful Object Relational Mapping (ORM) Framework for Java and SQLite 3.
 
  - [Project Website](http://www.neilson.co.za/sqlite-database-model/ "SQLite Database Model Java/SQLite ORM Project")
