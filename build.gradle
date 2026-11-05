@@ -1,0 +1,50 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.6.1'
+    }
+}
+
+// Shared JVM unit-test stack. Modules do not declare their own junit/mockito/robolectric versions.
+//   ./gradlew unitTests   runs every module's tests (debug variant of the Android library, `test` of the java modules)
+ext.unitTestVersions = [
+        junit            : '4.13.2',
+        mockito          : '5.14.2',
+        robolectric      : '4.14.1',
+        androidxTestCore : '1.6.1',
+        androidxTestJunit: '1.2.1',
+        orgJson          : '20240303',
+]
+
+tasks.register('unitTests') {
+    group = 'verification'
+    description = 'Runs the JVM unit tests of every module.'
+}
+
+subprojects { sub ->
+    def addUnitTestDependencies = {
+        def v = rootProject.ext.unitTestVersions
+        sub.dependencies.add('testImplementation', "junit:junit:${v.junit}")
+        sub.dependencies.add('testImplementation', "org.mockito:mockito-core:${v.mockito}")
+        sub.dependencies.add('testImplementation', "org.json:json:${v.orgJson}")
+    }
+
+    sub.plugins.withId('com.android.library') {
+        def v = rootProject.ext.unitTestVersions
+        addUnitTestDependencies()
+        sub.dependencies.add('testImplementation', "org.robolectric:robolectric:${v.robolectric}")
+        sub.dependencies.add('testImplementation', "androidx.test:core:${v.androidxTestCore}")
+        sub.dependencies.add('testImplementation', "androidx.test.ext:junit:${v.androidxTestJunit}")
+        sub.android.testOptions.unitTests.returnDefaultValues = true
+        sub.android.testOptions.unitTests.includeAndroidResources = true
+        rootProject.tasks.named('unitTests') { dependsOn(sub.tasks.matching { it.name == 'testDebugUnitTest' }) }
+    }
+
+    sub.plugins.withId('java') {
+        addUnitTestDependencies()
+        rootProject.tasks.named('unitTests') { dependsOn(sub.tasks.matching { it.name == 'test' }) }
+    }
+}

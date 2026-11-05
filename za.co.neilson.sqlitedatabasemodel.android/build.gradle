@@ -1,0 +1,26 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 35
+
+    defaultConfig {
+        minSdkVersion 26
+        targetSdkVersion 34
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    namespace 'za.co.neilson.sqlite.orm.android'
+    // Shared unit-test helpers (AndroidTestDatabase, OrmTestState) for every module that tests ORM persistence:
+    //   testImplementation testFixtures(project(':za.co.neilson.sqlitedatabasemodel.android'))
+    testFixtures { enable = true }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testFixturesApi project(':za.co.neilson.sqlitedatabasemodel.core')
+    implementation project(':za.co.neilson.sqlitedatabasemodel.core')
+}

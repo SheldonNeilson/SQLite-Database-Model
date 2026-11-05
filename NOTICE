@@ -16,7 +16,8 @@ The Android Open Source Project (http://source.android.com).
 
 ------------------------------------------------------------------
 
-Xerial SQLite JDBC Driver
+Xerial SQLite JDBC Driver (not bundled; the JDBC module's tests use it, and applications using the
+JDBC module supply their own SQLite JDBC driver)
 Copyright 2009 Taro L. Saito <leo@xerial.org>
 
 Versions of this product packaged with the Xerial SQLite JDBC Driver includes

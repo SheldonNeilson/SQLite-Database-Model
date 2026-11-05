@@ -1,0 +1,9 @@
+apply plugin: 'java'
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':za.co.neilson.sqlitedatabasemodel.core')
+
+    // In-memory SQLite for the repository-style tests (see src/test/.../InMemoryDatabase.java).
+    testImplementation 'org.xerial:sqlite-jdbc:3.49.1.0'
+}
